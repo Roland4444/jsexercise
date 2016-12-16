@@ -1,8 +1,98 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise</title>
+    <script>
 
+        function maxsize() {
+            return expo_counter(maxposition(N))
+        }
+
+        function addition() {
+            while (true)
+            {
+                Console.WriteLine ("enter N ");
+                int N = Convert.ToInt32 (Console.ReadLine ());
+                printRow (1, 1, N);
+                Console.ReadLine ();
+            }
+        }
+
+        function print_it(A)
+        {
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.White;
+            if ((int)(A / 100) <= 0) Console.Write (" ");
+            if ((int)(A / 10) <= 0)
+                Console.Write (" ");
+            Console.Write (" ");
+            if (check_it (A))
+                Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.Write (Convert.ToString (A));
+        }
+
+        function empty(){
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Write ("    ");
+        }
+
+        function expo_counter(A) {
+            result = 1;
+            while (true) {
+                b = Math.floor(A / 10);
+                if (b == 0) break;
+                result++;
+        }
+        return result;
+        }
+
+        function check_it(A)
+        {
+            if (A == 1) return false;
+            for ( i = 2; i<A; i++)
+            {
+                if ((A % i) == 0)
+                    return false;
+            };
+            return true;
+        }
+
+        function printRow(index, start_value, N)
+        {
+            for (i=1;i<=maxposition(N);i++){
+            if (is_present (i, index, N))
+                print_it (start_value++);
+            else
+                empty ();
+        }
+            Console.WriteLine ();
+            if (++index <= N)
+                printRow (index, start_value, N);
+        }
+
+        function is_present(currentpos, currentrow, allRows)
+        {
+            if (Math.Abs (allRows - currentpos) < currentrow)
+                return true;
+            return false;
+        }
+
+        function maxposition(A)
+        {
+            return A * 2 - 1;
+        }
+        }
+    </script>
+</head>
 <body>
-Hi
+<form>
+    Введите N:
+    <input id="N" type="text" value="1"><br>
+    <input type="button" value="Вывести пирамиду" onclick="addition();"><br>
+</form>
+<div id="result"></div>
 </body>
-
 </html>
