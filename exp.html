@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<body>
+<canvas id="canvas"></canvas>
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    canvas.width = document.body.clientWidth; //document.width is obsolete
+    canvas.height = document.body.clientHeight; //document.height is obsolete
+  //  canvasW = canvas.width;
+  //  canvasH = canvas.height;
+
+
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(270, 10, 320, 100);
+    ctx.font = "48px serif";
+    ctx.fillStyle = "black";
+    ctx.fillText("Hello world", 110, 150);
+
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-https://developer.mozilla.org/ru/docs/Web/API/Canvas_API/Tutorial/%D0%A0%D0%B8%D1%81%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D1%84%D0%B8%D0%B3%D1%83%D1%80
+<!--https://developer.mozilla.org/ru/docs/Web/API/Canvas_API/Tutorial/%D0%A0%D0%B8%D1%81%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D1%84%D0%B8%D0%B3%D1%83%D1%80  -->
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
@@ -7,93 +7,90 @@ https://developer.mozilla.org/ru/docs/Web/API/Canvas_API/Tutorial/%D0%A0%D0%B8%D
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise</title>
     <script>
+        var N
+        var deltay = 15;
+        var deltax = 25;
+        function pyramyde() {
+            var ii=0;
+            var initial_x = 0;
+            var initial_y = 0;
+            var start_value = 1;
+            N = parseInt(document.getElementById('N').value)
+            var const_shift = shift_x(N);
+            var fontsize = 10;
+            var textxoffset = 3;
+            var textyoffset = 10;
+            var canvas = document.getElementById("canvas")
+            var ctx = canvas.getContext("2d")
+            canvas.width = document.body.clientWidth; //document.width is obsolete
+            canvas.height = document.body.clientHeight; //document.height is obsolete
 
-        function maxsize() {
-            return expo_counter(maxposition(N))
+                //insert spaces
+
+                ctx.font = "8px arial";
+                for (ii = 1; ii <= N; ii++) {
+                    for (j = 1; j <= (maxposition(N) - maxposition(ii)) / 2; j++) {
+                        ctx.fillStyle = "gray"
+                        ctx.fillRect(initial_x, initial_y, const_shift, deltay);
+                        initial_x = initial_x + const_shift;
+                    }
+
+                    //render numbers
+                    for (z = 1; z <= maxposition(ii); z++) {
+                    //    alert("white")
+                    //    alert("z="+z.toString()+";;maxposition(i)="+maxposition(ii).toString()+";i="+ii.toString())
+                        ctx.fillStyle = "white"
+                        if (yellow_back(start_value)) ctx.fillStyle = "yellow"
+                        ctx.fillRect(initial_x, initial_y, const_shift, deltay);
+                        ctx.fillStyle = "black"
+                        ctx.fillText((start_value++).toString(), initial_x + textxoffset, initial_y + textyoffset);
+                        initial_x = initial_x + const_shift;
+                    }
+                    //insert spaces
+                    for (j = 1; j <= (maxposition(N) - maxposition(ii)) / 2; j++) {
+                        ctx.fillStyle = "gray"
+                        ctx.fillRect(initial_x, initial_y, const_shift, deltay);
+                        initial_x = initial_x + const_shift;
+                    }
+                    initial_y = initial_y + deltay;
+                    initial_x = 0;
+                }
+
+
         }
-
-        function addition() {
-            while (true)
+            function yellow_back( A)
             {
-                Console.WriteLine ("enter N ");
-                int N = Convert.ToInt32 (Console.ReadLine ());
-                printRow (1, 1, N);
-                Console.ReadLine ();
-            }
-        }
-
-        function print_it(A)
-        {
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.White;
-            if ((int)(A / 100) <= 0) Console.Write (" ");
-            if ((int)(A / 10) <= 0)
-                Console.Write (" ");
-            Console.Write (" ");
-            if (check_it (A))
-                Console.BackgroundColor = ConsoleColor.Yellow;
-            Console.Write (Convert.ToString (A));
-        }
-
-        function empty(){
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.Write ("    ");
-        }
-
-        function expo_counter(A) {
-            result = 1;
-            while (true) {
-                b = Math.floor(A / 10);
-                if (b == 0) break;
-                result++;
-        }
-        return result;
-        }
-
-        function check_it(A)
-        {
-            if (A == 1) return false;
-            for ( i = 2; i<A; i++)
-            {
-                if ((A % i) == 0)
-                    return false;
-            };
-            return true;
-        }
-
-        function printRow(index, start_value, N)
-        {
-            for (i=1;i<=maxposition(N);i++){
-            if (is_present (i, index, N))
-                print_it (start_value++);
-            else
-                empty ();
-        }
-            Console.WriteLine ();
-            if (++index <= N)
-                printRow (index, start_value, N);
-        }
-
-        function is_present(currentpos, currentrow, allRows)
-        {
-            if (Math.Abs (allRows - currentpos) < currentrow)
+                if (A === 1) return false;
+                for (  i = 2; i<A; i++)
+                {
+                    if ((A % i) === 0) return false;
+                };
                 return true;
-            return false;
-        }
+            }
 
-        function maxposition(A)
-        {
-            return A * 2 - 1;
-        }
-        }
+            function shift_x( N) {//shift (width 1 cell)
+            //    alert((expo_counter(maxposition(N))*deltax/2).toString())
+                return expo_counter(maxposition(N))*deltax/2;
+            }
+
+            function maxposition( A)
+            {
+                return (A * 2 - 1);
+            }
+
+            function expo_counter(A) {
+           // alert(A.toString().length.toString())
+                return A.toString().length
+            }
+
     </script>
 </head>
 <body>
 <form>
     Введите N:
     <input id="N" type="text" value="1"><br>
-    <input type="button" value="Вывести пирамиду" onclick="addition();"><br>
+    <input type="button" value="Вывести пирамиду" onclick="pyramyde();"><br>
 </form>
-<div id="result"></div>
+<canvas id="canvas"></canvas>
 </body>
 </html>
