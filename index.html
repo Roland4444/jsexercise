@@ -21,8 +21,8 @@
             var textyoffset = 10;
             var canvas = document.getElementById("canvas")
             var ctx = canvas.getContext("2d")
-            canvas.width = document.body.clientWidth; //document.width is obsolete
-            canvas.height = document.body.clientHeight; //document.height is obsolete
+            canvas.width = document.body.clientWidth;
+            canvas.height = document.body.clientHeight;
             //insert spaces
             ctx.font = "8px arial";
                 for (ii = 1; ii <= N; ii++) {
@@ -33,8 +33,6 @@
                     }
                     //render numbers
                     for (z = 1; z <= maxposition(ii); z++) {
-                    //    alert("white")
-                    //    alert("z="+z.toString()+";;maxposition(i)="+maxposition(ii).toString()+";i="+ii.toString())
                         ctx.fillStyle = "white"
                         if (yellow_back(start_value)) ctx.fillStyle = "yellow"
                         ctx.fillRect(initial_x, initial_y, const_shift, deltay);
