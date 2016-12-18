@@ -9,8 +9,9 @@
     <script>
         var N
         var deltay = 15;
-        var deltax = 25;
+        var deltax = 16;
         function pyramyde() {
+
             var ii=0;
             var initial_x = 0;
             var initial_y = 0;
@@ -24,10 +25,8 @@
             var ctx = canvas.getContext("2d")
             canvas.width = document.body.clientWidth; //document.width is obsolete
             canvas.height = document.body.clientHeight; //document.height is obsolete
-
-                //insert spaces
-
-                ctx.font = "8px arial";
+            //insert spaces
+            ctx.font = "8px arial";
                 for (ii = 1; ii <= N; ii++) {
                     for (j = 1; j <= (maxposition(N) - maxposition(ii)) / 2; j++) {
                         ctx.fillStyle = "gray"
@@ -55,8 +54,6 @@
                     initial_y = initial_y + deltay;
                     initial_x = 0;
                 }
-
-
         }
             function yellow_back( A)
             {
