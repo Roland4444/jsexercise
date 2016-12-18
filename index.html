@@ -8,7 +8,7 @@
     <script>
         var N
         var deltay = 15;
-        var deltax = 16;
+        var deltax = 18;
         function pyramyde() {
             var ii=0;
             var initial_x = 0;
@@ -17,14 +17,14 @@
             N = parseInt(document.getElementById('N').value)
             var const_shift = shift_x(N);
             var fontsize = 10;
-            var textxoffset = 3;
-            var textyoffset = 10;
+            var textxoffset = 2;
+            var textyoffset = 8;
             var canvas = document.getElementById("canvas")
             var ctx = canvas.getContext("2d")
             canvas.width = document.body.clientWidth;
             canvas.height = document.body.clientHeight;
             //insert spaces
-            ctx.font = "8px arial";
+            ctx.font = "7px arial";
                 for (ii = 1; ii <= N; ii++) {
                     for (j = 1; j <= (maxposition(N) - maxposition(ii)) / 2; j++) {
                         ctx.fillStyle = "gray"
