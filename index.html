@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--https://developer.mozilla.org/ru/docs/Web/API/Canvas_API/Tutorial/%D0%A0%D0%B8%D1%81%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D1%84%D0%B8%D0%B3%D1%83%D1%80  -->
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
@@ -11,7 +10,6 @@
         var deltay = 15;
         var deltax = 16;
         function pyramyde() {
-
             var ii=0;
             var initial_x = 0;
             var initial_y = 0;
@@ -33,7 +31,6 @@
                         ctx.fillRect(initial_x, initial_y, const_shift, deltay);
                         initial_x = initial_x + const_shift;
                     }
-
                     //render numbers
                     for (z = 1; z <= maxposition(ii); z++) {
                     //    alert("white")
@@ -55,8 +52,7 @@
                     initial_x = 0;
                 }
         }
-            function yellow_back( A)
-            {
+            function yellow_back( A){
                 if (A === 1) return false;
                 for (  i = 2; i<A; i++)
                 {
@@ -64,22 +60,9 @@
                 };
                 return true;
             }
-
-            function shift_x( N) {//shift (width 1 cell)
-            //    alert((expo_counter(maxposition(N))*deltax/2).toString())
-                return expo_counter(maxposition(N))*deltax/2;
-            }
-
-            function maxposition( A)
-            {
-                return (A * 2 - 1);
-            }
-
-            function expo_counter(A) {
-           // alert(A.toString().length.toString())
-                return A.toString().length
-            }
-
+            function shift_x( N) {return expo_counter(maxposition(N))*deltax/2;}
+            function maxposition( A) {return (A * 2 - 1);}
+            function expo_counter(A) {return A.toString().length}
     </script>
 </head>
 <body>
